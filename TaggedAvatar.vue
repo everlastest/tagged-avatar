@@ -58,8 +58,8 @@ export default {
 
 <style scoped>
 .avatar {
+  display: inline-block;
   position: relative;
-  left: 40px;
   width: 70px;
   height: 70px;
   background-size: cover;
@@ -87,7 +87,6 @@ export default {
   background-color: #ffffff;
   box-shadow: 0 0 15px #cdcdcd;
   opacity: 0.9;
-
 }
 
 .ranking {
