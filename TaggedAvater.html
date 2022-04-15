@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .avatar {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50px, -50px);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 50%;
+            border: 6px solid #B5D0D0;
+        }
+
+        .tag {
+            position: absolute;
+            left: 50%;
+            bottom: -10px;
+            height: 22px;
+            line-height: 22px;
+            min-width: 20px;
+            max-width: 80px;
+            padding: 0 5px;
+            text-align: center;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            color: #F5B767;
+            border-radius: 8px;
+            background-color: #ffffff;
+            box-shadow: 0 0 15px #cdcdcd;
+            opacity: 0.9;
+            font-size: 13px;
+        }
+
+        .ranking {
+            font-weight: bold;
+            color: #acacac;
+        }
+
+        .name {
+            font-weight: bold;
+            color: #F5B767;
+        }
+    </style>
+</head>
+<body>
+<div class="avatar">
+    <div class="tag">
+        <span class="ranking">1</span>
+        <span class="name">活捉一只小小黑</span>
+    </div>
+</div>
+<script>
+    let sign = true // 标识位，判断是什么状态
+    let timer = null    // 算是防抖函数的timer吧
+    let tag = document.querySelector('.tag')
+    window.onload = function () {
+        let avatar = document.querySelector('.avatar')
+        avatar.style.backgroundImage = 'url("https://tse1-mm.cn.bing.net/th/id/R-C.6f3812af899915ec57ee2e7d7a277d72?rik=qiMWKqmZtKFBZA&riu=http%3a%2f%2fscimg.jianbihuadq.com%2f202012%2f2020120319570822.jpg&ehk=ypsLEZAjwfnVoLPwnQtjL%2fcDSf0SuedZf5vnf%2ffyscE%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1")'
+        changeWidth(tag)
+    }
+
+    //修改宽度函数
+    function changeWidth(tag) {
+        if (sign === false)
+            tag.style.maxWidth = 'none'
+        else {
+            tag.style.maxWidth = '70px'
+        }
+        let width = tag.clientWidth
+        tag.style.transform = 'translateX(-' + width / 2 + 'px)'
+    }
+
+    //绑定鼠标经过时间
+    tag.addEventListener('mouseover', () => {
+        if (timer) clearTimeout(timer)
+        if (sign === true) {
+            timer = setTimeout(() => {
+                // 实现渐变
+                tag.style.transition = '0.5s'
+                sign = false
+                changeWidth(tag)
+            }, 100)
+        }
+    })
+    //绑定鼠标离开时间
+    tag.addEventListener('mouseleave', () => {
+        if (timer) clearTimeout(timer)
+        if (sign === false) {
+            timer = setTimeout(() => {
+                sign = true
+                changeWidth(tag)
+            }, 100)
+        }
+    })
+</script>
+</body>
+
+</html>
