@@ -8,9 +8,9 @@
 
 ## 二.使用说明
 
-Tagged-Avatar.vue为组件，直接复制到vue项目中即可作为组件使用
+TaggedAvatar.vue为组件，直接复制到vue项目中即可作为组件使用
 
-Tagged-Avatar.html为简单演示界面，可直接在浏览器打开
+TaggedAvatar.html为简单演示界面，可直接在浏览器打开
 
 ## 二.示例
 
