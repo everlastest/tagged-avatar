@@ -14,7 +14,7 @@
 
 - **鼠标覆盖tag状态**
 
-![](img\tag-fold.png)
+![](img/tag-unfold.png)
 
 ## 三.详细实现过程
 
@@ -200,3 +200,33 @@ props: ['placing', 'name', 'imgUrl']
 ```
 
 ## 四.使用组件
+
+```vue
+<template>
+<div>
+    // 自定义参数传参
+	<Avatar :placing="Info.placing" :name="Info.name" :imgUrl="Info.imgUrl"></Avatar> 
+</div>
+</template>
+
+<script>	
+//引入组件
+import Avatar from "@/components/planet/Avatar"
+export default {
+  name: "DetailView",
+  components:{
+    //注册组件
+    Avatar
+  },
+  data() {
+    return {
+   	  Info:{
+        placing:1,
+        name:"活捉一直小小黑",
+        imgUrl:"http:../..."
+      }
+    }
+  }
+</script>
+```
+
